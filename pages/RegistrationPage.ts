@@ -23,8 +23,8 @@ export class RegistrationPage {
         this.txtLastname = page.getByPlaceholder("Last Name");
         this.txtEmail = page.getByPlaceholder("E-Mail");
         this.txtTelephone = page.getByPlaceholder("Telephone");
-        this.txtConfirmPassword = page.getByPlaceholder("Password Confirm");
-        this.txtPassword = page.getByPlaceholder('Password');
+        this.txtConfirmPassword = page.locator("input#input-confirm");
+        this.txtPassword = page.locator("input#input-password");
         this.chkdPolicy = page.locator('input[name="agree"]');
         this.btnContinue = page.locator('input[value="Continue"]');
         this.msgConfirmation = page.locator('h1:has-text("Your Account Has Been Created!")');

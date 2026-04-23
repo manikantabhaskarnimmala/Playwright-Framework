@@ -9,6 +9,10 @@ export class RandomDataUtils {
         return faker.person.lastName();
     }
 
+    static getEmail(){
+        return faker.internet.email();
+    }
+
     static getFullName() {
         return faker.person.fullName();
     }

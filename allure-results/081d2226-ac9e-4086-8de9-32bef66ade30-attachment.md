@@ -1,0 +1,91 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: AccountRegistration.spec.ts >> Account Registration
+- Location: tests\AccountRegistration.spec.ts:44:5
+
+# Error details
+
+```
+Error: page.goto: url: expected string, got undefined
+```
+
+# Test source
+
+```ts
+  1  | /**
+  2  |  * Test Case: Account Registration
+  3  |  * 
+  4  |  * Tags: @master @sanity @regression
+  5  |  * 
+  6  |  * Steps:
+  7  |  * 1) Navigate to application URL 
+  8  |  * 2) Go to 'My Account' and click 'Register'
+  9  |  * 3) Fill in registration details with random data
+  10 |  * 4) Agree to Privacy Policy and submit the form
+  11 |  * 5) Validate the confirmation message
+  12 |  */
+  13 | 
+  14 | 
+  15 | import { test, expect } from '@playwright/test';
+  16 | 
+  17 | import { Config } from '@playwright/test';
+  18 | import { HomePage } from '../pages/HomePage';
+  19 | import { RegistrationPage } from '../pages/RegistrationPage';
+  20 | import { RandomDataUtils } from '../utils/RandomDataGenerator';
+  21 | import { TestConfig } from '../test.config';
+  22 | 
+  23 | let config: TestConfig;
+  24 | let hp: HomePage;
+  25 | let rp: RegistrationPage;
+  26 | 
+  27 | test.beforeEach(async ({ page }) => {
+  28 | 
+  29 |     config = new TestConfig();
+> 30 |     await page.goto(config.appUrl);
+     |                ^ Error: page.goto: url: expected string, got undefined
+  31 | 
+  32 |     //Instance reference
+  33 |     hp = new HomePage(page);
+  34 |     rp = new RegistrationPage(page);
+  35 | });
+  36 | 
+  37 | test.afterEach(async ({ page }) => {
+  38 |     await page.waitForTimeout(3000);
+  39 |     await page.close();
+  40 | });
+  41 | 
+  42 | 
+  43 | 
+  44 | test('Account Registration', async ({ page }) => {
+  45 | 
+  46 |     //go to my account & click register
+  47 |     await hp.clickMyAccount();
+  48 |     await hp.clickRegister();
+  49 | 
+  50 |     //FIll the registration form
+  51 | 
+  52 |     await rp.setFirstName(RandomDataUtils.getFirstName());
+  53 |     await rp.setLastName(RandomDataUtils.getLastName());
+  54 |     await rp.setEmail(RandomDataUtils.getEmail());
+  55 |     await rp.setTelephone(RandomDataUtils.getPhoneNumber());
+  56 |     const password = RandomDataUtils.getPassword();
+  57 |     await rp.setPassword(password);
+  58 |     await rp.setConfirmPassword(password);
+  59 |     await rp.setPrivacyPolicy();
+  60 |     await rp.clickContinue();
+  61 | 
+  62 |     //validation
+  63 |     const confirmMessage = await rp.getConfirmationMsg();
+  64 |     await expect(confirmMessage).toBe("Your Account Has Been Created!");
+  65 | 
+  66 | 
+  67 | })
+  68 | 
+  69 | 
+```
