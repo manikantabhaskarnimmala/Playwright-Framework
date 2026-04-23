@@ -9,7 +9,7 @@ export default defineConfig({
 
   reporter: [
     ['html',{outputFolder : '../reports/html-report'}],
-    ['allure-playwright', {outputFolder : '../reports/allure-results'}],
+    //['allure-playwright', {outputFolder : '../reports/allure-results'}],
 
   ],
 
