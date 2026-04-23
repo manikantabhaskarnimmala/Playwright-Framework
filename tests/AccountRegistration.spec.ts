@@ -43,6 +43,8 @@ test.afterEach(async ({ page }) => {
 
 test('Account Registration', async ({ page }) => {
 
+    
+
     //go to my account & click register
     await hp.clickMyAccount();
     await hp.clickRegister();
