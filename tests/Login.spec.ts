@@ -33,8 +33,8 @@ test("Login Test", async ({ })=>{
 
 
     //Login Page
-    await lp.setEmail(config.email);
-    await lp.setPassword(config.password);
+    await lp.setEmail(config.email); //login with email
+    await lp.setPassword(config.password); // login with password
     await lp.clickLogin(); //clicks login
 
     //My Account Page
