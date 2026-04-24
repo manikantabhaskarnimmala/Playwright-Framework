@@ -41,9 +41,9 @@ test.afterEach(async ({ page }) => {
 
 
 
-test('Account Registration', async ({ page }) => {
+test('Account Registration', { tag: ["@sanity", "@regression", "@master"] }, async ({ page }) => {
 
-    
+
 
     //go to my account & click register
     await hp.clickMyAccount();

@@ -1,4 +1,4 @@
-import {test, expect} from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
@@ -6,13 +6,13 @@ import { MyAccountPage } from "../pages/MyAccountPage";
 import { TestConfig } from "../test.config";
 import { RandomDataUtils } from "../utils/RandomDataGenerator";
 
-let config:TestConfig;
-let hp:HomePage;
-let lp :LoginPage;
-let map :MyAccountPage;
+let config: TestConfig;
+let hp: HomePage;
+let lp: LoginPage;
+let map: MyAccountPage;
 
-test.beforeEach(async({page})=>{
-    config = new TestConfig(); 
+test.beforeEach(async ({ page }) => {
+    config = new TestConfig();
     await page.goto(config.appUrl);
 
     //Instance reference
@@ -26,7 +26,7 @@ test.afterEach(async ({ page }) => {
     await page.close();
 });
 
-test("Login Test", async ({ })=>{
+test("Login Test", { tag: ["@sanity", "@regression", "@master"] }, async ({ }) => {
 
     await hp.clickMyAccount();
     await hp.clickLogin();
