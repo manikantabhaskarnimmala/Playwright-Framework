@@ -35,7 +35,7 @@ test("Login Test", async ({ })=>{
     //Login Page
     await lp.setEmail(config.email);
     await lp.setPassword(config.password);
-    await lp.clickLogin();
+    await lp.clickLogin(); //clicks login
 
     //My Account Page
     const message = await map.isMyAccountPageExists();
