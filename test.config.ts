@@ -4,7 +4,7 @@ export class TestConfig{
     appUrl= "https://tutorialsninja.com/demo/";
        
     //valid login credentials- create your own login account 
-    email="playwrightautomation@gmail.com" ;
+    email="Playwrightautomation@gmail.com" ;
     password="Playwright@2025" ;
  
     //product details 
