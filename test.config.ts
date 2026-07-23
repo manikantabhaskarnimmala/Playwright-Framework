@@ -10,5 +10,5 @@ export class TestConfig{
     //product details 
     productName="MacBook" ;
     productQuantity="2" ;
-    totalPrice="$1,204.00"; 
+    totalPrice="$04.00"; 
 }
